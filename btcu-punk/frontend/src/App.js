@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import {Row, Col, Layout} from 'antd'
+import HeaderPC from './components/hpheader.js'
 import './App.css';
 
 class App extends Component {
+  /*
   state = {users: []}
 
   componentDidMount() {
@@ -9,14 +12,11 @@ class App extends Component {
       .then(res => res.json())
       .then(users => this.setState({ users }));
   }
-
+*/
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
+        <HeaderPC />
       </div>
     );
   }
