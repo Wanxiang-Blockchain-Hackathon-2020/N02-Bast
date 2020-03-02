@@ -12,6 +12,7 @@ use rstd::prelude::*;
 use support::{decl_module, decl_storage, decl_event, StorageValue, StorageMap, dispatch::Result, Parameter, ensure};
 use system::{self, ensure_signed};
 use parity_codec::Codec;
+use parity_codec::{Decode, Encode};
 use runtime_primitives::traits::{CheckedSub, CheckedAdd, Member, SimpleArithmetic, As};
 
 
@@ -31,7 +32,7 @@ pub struct Erc20Token<U> {
 	total_supply: U,
 }
 
-/// This module's storage items.
+// This module's storage items.
 decl_storage! {
 	trait Store for Module<T: Trait> as multiToken {
 		// token id nonce for storing the next token id available for token initialization

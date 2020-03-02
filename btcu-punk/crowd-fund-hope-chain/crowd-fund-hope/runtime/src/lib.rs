@@ -213,7 +213,7 @@ construct_runtime!(
 		Sudo: sudo,
 		// Used for the module template in `./template.rs`
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
-		multiToken: multitoken::{Module, Call, Storage, Event<T>},
+		MultiToken: multitoken::{Module, Call, Storage, Event<T>},
 
 	}
 );
