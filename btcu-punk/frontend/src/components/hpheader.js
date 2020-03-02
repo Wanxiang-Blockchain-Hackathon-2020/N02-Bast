@@ -1,9 +1,13 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Row, Col } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout, Menu, Input, Row, Col, Link} from 'antd';
+import homepage from './homepage.js'
+import {   
+  HomeOutlined,
+  SmileOutlined,
+} from '@ant-design/icons';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Search } = Input;
+const { Header } = Layout;
 
 
 export default class HeaderPC extends React.Component {
@@ -23,90 +27,41 @@ export default class HeaderPC extends React.Component {
               <Col span={1}>
               <img id='logo' src={require('../img/btcu1.png')} alt='logo' />
               </Col>             
-              <Col span={5} offset={2}>
+              <Col span={8} offset={2}>
                   <Menu
                   theme="dark"
                   mode="horizontal"
                   defaultSelectedKeys={['2']}
                   style={{ lineHeight: '64px' }}
                 >
-                  <Menu.Item key="1">nav 1</Menu.Item>
-                  <Menu.Item key="2">nav 2</Menu.Item>
-                  <Menu.Item key="3">nav 3</Menu.Item>
+                  <Menu.Item key="1"><HomeOutlined />首页</Menu.Item>
+                  <Menu.Item key="2">信息公开</Menu.Item>
+                  <Menu.Item key="3">公益项目</Menu.Item>
+                  <Menu.Item key="4">监管与捐赠</Menu.Item>
+                </Menu>
+              </Col>
+              <Col offset={5}>
+                <Search placeholder="xiu~一下" enterButton
+                  style={{
+                    padding: 24,
+                    margin: -5,
+                    width: 350,
+                  }}
+                />
+              </Col>
+              <Col >
+              <Menu
+                  theme="dark"
+                  mode="horizontal"
+                  defaultSelectedKeys={['2']}
+                  style={{ lineHeight: '64px' }}
+                >
+                  <Menu.Item key="1">登录|注册</Menu.Item>
+                  <Menu.Item key="2"> <SmileOutlined />个人中心</Menu.Item>
                 </Menu>
               </Col>
             </Row>
           </Header>
-          <Layout>
-            <Sider width={240} className="site-layout-background">
-              <Menu
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                style={{ height: '100%', borderRight: 0 }}
-              >
-                <SubMenu
-                  key="sub1"
-                  title={
-                    <span>
-                      <UserOutlined />
-                      subnav 1
-                    </span>
-                  }
-                >
-                  <Menu.Item key="1">option1</Menu.Item>
-                  <Menu.Item key="2">option2</Menu.Item>
-                  <Menu.Item key="3">option3</Menu.Item>
-                  <Menu.Item key="4">option4</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub2"
-                  title={
-                    <span>
-                      <LaptopOutlined />
-                      subnav 2
-                    </span>
-                  }
-                >
-                  <Menu.Item key="5">option5</Menu.Item>
-                  <Menu.Item key="6">option6</Menu.Item>
-                  <Menu.Item key="7">option7</Menu.Item>
-                  <Menu.Item key="8">option8</Menu.Item>
-                </SubMenu>
-                <SubMenu
-                  key="sub3"
-                  title={
-                    <span>
-                      <NotificationOutlined />
-                      subnav 3
-                    </span>
-                  }
-                >
-                  <Menu.Item key="9">option9</Menu.Item>
-                  <Menu.Item key="10">option10</Menu.Item>
-                  <Menu.Item key="11">option11</Menu.Item>
-                  <Menu.Item key="12">option12</Menu.Item>
-                </SubMenu>
-              </Menu>
-            </Sider>
-            <Layout style={{ padding: '0 24px 24px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-              </Breadcrumb>
-              <Content
-                className="site-layout-background"
-                style={{
-                  padding: 24,
-                  margin: 0,
-                  minHeight: 880,
-                }}
-              >
-                Content
-              </Content>
-            </Layout>
-          </Layout>
         </Layout>
       </div>
     )

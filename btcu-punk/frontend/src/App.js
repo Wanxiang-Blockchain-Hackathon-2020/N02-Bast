@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Row, Col, Layout} from 'antd'
+import ReactDOM from 'react-dom';
+import { Route, BrowserRouter } from 'react-router-dom'
+import homepage from './components/homepage.js'
 import HeaderPC from './components/hpheader.js'
 import './App.css';
 
@@ -16,7 +19,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HeaderPC />
+       <HeaderPC />
+      <BrowserRouter>
+        <Route exact path='/home' component={homepage} />
+      </BrowserRouter>
       </div>
     );
   }
