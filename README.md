@@ -7,3 +7,6 @@ set PORT=3001 && node bin/www
 ```
 npm start
 ```
+
+## Project 
+Project 是项目相关的一些资料
