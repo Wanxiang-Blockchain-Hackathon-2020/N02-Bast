@@ -1,5 +1,42 @@
 # Substrate Package
 
+## 启动链
+### 1. 先编译
+进入这个目录：
+```shell
+cd ./N02/btcu-punk/crowd-fund-hope-chain/crowd-fund-hope/
+```
+执行：
+```shell
+./scripts/build.sh
+```
+再执行:
+```shell
+cargo build
+```
+
+### 2. 启动链
+```shell
+./target/debug/crowd-fund-hope --dev 
+```
+
+logout:
+```shell
+2020-03-02 04:06:12 Substrate Node
+2020-03-02 04:06:12   version 1.0.0-26469d7-x86_64-linux-gnu
+2020-03-02 04:06:12   by bitrocks, 2019
+2020-03-02 04:06:12 Chain specification: Development
+2020-03-02 04:06:12 Node name: soft-children-9586
+2020-03-02 04:06:12 Roles: AUTHORITY
+2020-03-02 04:06:13 Initializing Genesis block/state (state: 0x957b…ed86, header-hash: 0x6877…d3d1)
+2020-03-02 04:06:13 Loaded block-time = 10 seconds from genesis on first-launch
+2020-03-02 04:06:13 Best block: #0
+2020-03-02 04:06:13 Using default protocol ID "sup" because none is configured in the chain specs
+2020-03-02 04:06:13 Local node identity is: QmX9Sv8DmeAJttaXRinmHtQxMGYa4f3miP8e1BLeVuJRVC
+```
+然后可以正常出块。
+![explore](./explore.PNG)
+
 A stable, known working version of the [Substrate Node Template](https://github.com/paritytech/substrate/tree/master/node-template), [Substrate Module Template](https://github.com/shawntabrizi/substrate-module-template), and [Substrate UI](https://github.com/paritytech/substrate-ui).
 
 > **Note:** that this branch depends on the `v1.0` branch of Substrate, not a fixed commit. That means it _may_ be possible that your node breaks if a breaking change makes its way into the `v1.0` branch, but this is unlikely as the branch is intended to be stable.
