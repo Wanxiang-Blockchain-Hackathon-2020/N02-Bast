@@ -1,16 +1,49 @@
-import React from 'react'
-import { Layout, Menu, Input, Row, Col, Link} from 'antd';
-import homepage from './homepage.js'
+import React ,{ useState } from 'react'
+import { 
+  Layout, 
+  Menu, 
+  Input, 
+  Row, 
+  Col, 
+  Modal, 
+  Tabs, } from 'antd';
 import {   
   HomeOutlined,
-  SmileOutlined,
 } from '@ant-design/icons';
 
+import homepage from './homepage.js'
+import RegistrationForm from './sign/register.js'
+import NormalLoginForm from './sign/login.js'
+
+const { TabPane } = Tabs;
 const { Search } = Input;
 const { Header } = Layout;
 
 
+
 export default class HeaderPC extends React.Component {
+  state = { visible: false };
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+  
   render() {
     return (
       <div >
@@ -55,10 +88,28 @@ export default class HeaderPC extends React.Component {
                   mode="horizontal"
                   defaultSelectedKeys={['2']}
                   style={{ lineHeight: '64px' }}
+                  key="1" type="primary" onClick={this.showModal}
                 >
-                  <Menu.Item key="1">登录|注册</Menu.Item>
-                  <Menu.Item key="2"> <SmileOutlined />个人中心</Menu.Item>
+                  <Menu.Item >登录|注册</Menu.Item>
                 </Menu>
+                  <Modal
+                  width={460}
+                  title="登录|注册"
+                  visible={this.state.visible}
+                  onOk={this.handleOk}
+                  onCancel={this.handleCancel}
+                  footer={null}
+                >
+                <Tabs defaultActiveKey='1'>
+                  <TabPane key='1' tab='登录'>
+                  <NormalLoginForm />
+                  </TabPane>
+                  <TabPane key='2' tab='注册'>
+                  <RegistrationForm/>
+                  </TabPane>
+                  </Tabs>
+                   
+                </Modal>
               </Col>
             </Row>
           </Header>
