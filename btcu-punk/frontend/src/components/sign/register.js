@@ -15,40 +15,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
-const residences = [
-  {
-    value: '湖南省',
-    label: '湖南省',
-    children: [
-      {
-        value: '娄底市',
-        label: '娄底市',
-        children: [
-          {
-            value: '荷叶',
-            label: '荷叶',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: '江苏',
-    label: '江苏',
-    children: [
-      {
-        value: '南京',
-        label: '南京',
-        children: [
-          {
-            value: '中华门',
-            label: '中华门',
-          },
-        ],
-      },
-    ],
-  },
-];
+
 const formItemLayout = {
   labelCol: {
     xs: {

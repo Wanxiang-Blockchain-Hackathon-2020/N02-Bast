@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Menu} from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
-const {  Content, Footer, Sider } = Layout;
+const {  Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default class homepage  extends React.Component {

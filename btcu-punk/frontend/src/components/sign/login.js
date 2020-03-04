@@ -1,11 +1,62 @@
 import React from 'react'
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
 const NormalLoginForm = () => {
   const onFinish = values => {
     console.log('Received values of form: ', values);
   };
+  const propTypes = {
+    form: PropTypes.objectOf(
+      PropTypes.func.isRequired 
+    ).isRequired,
+    login: PropTypes.func.isRequired
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        const JSONvalues = JSON.stringify(values)
+        console.log('Received values of form: ', JSONvalues, values)
+        // let url = 'http://localhost:3001/users/login'
+        let url = 'http://120.79.186.162:3001/users/login'
+        fetch(url,
+          {
+            name: 'data',
+            method: 'POST',
+            body: JSONvalues,
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded'
+            }
+          })
+          .then(res => {
+            console.log(res)
+            if (res.status === 500) {
+              throw new Error('用户名或密码错误')
+            } else {
+              return res.json()
+            }
+          })
+          .then(res => {
+            console.log(res)
+            this.setState({
+              user: res[0]
+            })
+            this.props.login(res[0])
+            this.setState({
+              loginVisible: false,
+              isLogined: true
+            })
+            console.log(this.state, 'user')
+          })
+          .catch(err => {
+            console.log(err.message)
+            alert(err.message)
+          })
+      }
+    })
+  }
 
   return (
     <Form
@@ -13,6 +64,7 @@ const NormalLoginForm = () => {
       className="login-form"
       initialValues={{ remember: true }}
       onFinish={onFinish}
+      onSubmit={handleSubmit}
     >
       <Form.Item
         name="username"
