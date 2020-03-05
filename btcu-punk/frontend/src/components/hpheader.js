@@ -10,8 +10,8 @@ import {
 import {   
   HomeOutlined,
 } from '@ant-design/icons';
-
-import homepage from './homepage.js'
+import { Link } from 'react-router-dom'
+//import homepage from './homepage.js'
 import RegistrationForm from './sign/register.js'
 import NormalLoginForm from './sign/login.js'
 
@@ -67,7 +67,9 @@ export default class HeaderPC extends React.Component {
                   defaultSelectedKeys={['2']}
                   style={{ lineHeight: '64px' }}
                 >
-                  <Menu.Item key="1"><HomeOutlined />首页</Menu.Item>
+                  <Menu.Item key="1" >
+                  <Link to='/home' ><HomeOutlined />首页</Link>
+                  </Menu.Item>
                   <Menu.Item key="2">信息公开</Menu.Item>
                   <Menu.Item key="3">公益项目</Menu.Item>
                   <Menu.Item key="4">监管与捐赠</Menu.Item>

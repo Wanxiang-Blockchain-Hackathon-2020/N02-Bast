@@ -10,6 +10,28 @@
   margin:-24px 0px 10px 10px;
 }
 
+#hplogo{
+  width: 350px;
+  height: 229px;
+}
+.homepage{
+  background-color: #c7c7e0da;
+}
+.dongtai{
+  text-align: left;
+  background-color: #e8e8f3fa;
+}
+.dontaitab{
+  background-color: #e8e8f3fa;
+  min-height: 3.34in
+}
+.ziigy{
+  font-size:420%;
+  font-family: Georgia;
+}
+.ziijiany{
+  background-color: #f7f7fcda;
+}
 #head {
   height: 6px;
 }
