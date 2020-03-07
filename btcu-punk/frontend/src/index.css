@@ -14,6 +14,10 @@
   width: 350px;
   height: 229px;
 }
+
+.disclosure{
+  background-color: #5555b3da;
+}
 .homepage{
   background-color: #c7c7e0da;
 }
@@ -26,11 +30,15 @@
   min-height: 3.34in
 }
 .ziigy{
-  font-size:420%;
+  font-size:450%;
   font-family: Georgia;
+  background-color: #5555b3da;
 }
 .ziijiany{
-  background-color: #f7f7fcda;
+  background-color: #5555b3da;
+}
+.ziijianyen{
+  font-size:40%;
 }
 #head {
   height: 6px;

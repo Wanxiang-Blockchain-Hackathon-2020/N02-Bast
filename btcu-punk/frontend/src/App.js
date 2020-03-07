@@ -6,45 +6,47 @@ import { Layout} from 'antd';
 import homepage from './pages/homepage'
 import HeaderPC from './components/hpheader.js'
 import './App.css';
+import disclosure from './components/disclosure'
 const { Header, Content, Footer } = Layout;
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
+import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import Axios from '../src/components/commonweal'
+
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk, logger)
+  )
+);
 
 class App extends Component {
-  /*
-  state = {users: []}
-
-  componentDidMount() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
-  }
-
-  render() {
-    return (
-      <div className="App">
-       <HeaderPC />
-
-      <BrowserRouter>
-        <Route exact path='/home' component={homepage} />
-      </BrowserRouter>
-      </div>
-    );
-    */
     render() {
       return (
-        <div className="App">
+        <Provider store={ store }>
+         <div className="App">
+
         <Layout>
             <HeaderPC />
           <Content>
             <BrowserRouter>
-              <Route exact path='/' component={homepage} />
+              <Route exact path='/home' component={homepage} />
+              <Route exact path='/dd' component={disclosure} />
+              <Route exact path='d' component={Axios}/>
             </BrowserRouter>
           </Content>
           <Footer style={{ textAlign: 'center' } } className='homepage' >Nice ©2020 Created by Specter</Footer>
         </Layout>
-         
-  
-        
-        </div>
+ 
+
+
+</div>
+        </Provider>
+       
       );
   }
 }

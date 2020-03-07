@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Form,
   Input,
@@ -12,9 +12,10 @@ import {
   AutoComplete,
 } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
+import axios from 'axios'
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
+import {userSignupRequest} from '../../actions/registrationActions'
 
 const formItemLayout = {
   labelCol: {
@@ -47,14 +48,23 @@ const tailFormItemLayout = {
   },
 };
 
-const RegistrationForm = () => {
-  const [form] = Form.useForm();
-
-  const onFinish = values => {
-    console.log('Received values of form: ', values);
-  };
-
-  const prefixSelector = (
+class Registration extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      email:'',
+      Password:'',
+      confirm:'',
+      nickname:'',
+      phone:''
+    }
+  }
+  static propTypes = {
+    userSignupRequest: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired,
+    isUserExists: PropTypes.func.isRequired
+  }
+  prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
         style={{
@@ -66,50 +76,49 @@ const RegistrationForm = () => {
       </Select>
     </Form.Item>
   );
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-  const onWebsiteChange = value => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(['.com', '.org', '.net'].map(domain => `${value}${domain}`));
-    }
+  onFinish = (e) => {
+ //   e.preventDefault();
+    console.log('Received values of form: ', e);
+    //axios.post('api/usr/',{user:this.state})
+    this.props.userSignupRequest(this.state)
   };
-
-  const websiteOptions = autoCompleteResult.map(website => ({
-    label: website,
-    value: website,
-  }));
-  return (
-    <Form
-      {...formItemLayout}
-      form={form}
-      name="register"
-      onFinish={onFinish}
-      initialValues={{
-        residence: ['湖南省', '娄底市', '荷叶'],
-        prefix: '86',
-      }}
-      scrollToFirstError
-    >
-      <Form.Item
-        name="email"
-        label="E-mail"
-        rules={[
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-          {
-            required: true,
-            message: 'Please input your E-mail!',
-          },
-        ]}
+  onChange=(e)=>{
+    this.setState({[e.target.name]:e.target.value})
+  }
+  render(){
+    return (
+      <Form
+        {...formItemLayout}
+        name="register"
+        onFinish={this.onFinish}
+        initialValues={{
+          prefix: '86',
+        }}
+        scrollToFirstError
       >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
+        <Form.Item
+          name="email"
+          label="E-mail"
+          rules={[
+            {
+              type: 'email',
+              message: 'The input is not valid E-mail!',
+            },
+            {
+              required: true,
+              message: 'Please input your E-mail!',
+            },
+          ]}
+        >
+          <Input 
+            value={this.state.email}
+            name="email"
+            type="email"
+            onChange={this.onChange}
+            
+          />
+        </Form.Item>
+        <Form.Item
         name="password"
         label="密码"
         rules={[
@@ -120,7 +129,12 @@ const RegistrationForm = () => {
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password 
+        value={this.state.Password}
+        name="Password"
+        type="password"
+        onChange={this.onChange}
+        />
       </Form.Item>
 
       <Form.Item
@@ -144,7 +158,12 @@ const RegistrationForm = () => {
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password 
+        value={this.state.confirm}
+        name="confirm"
+        type="password"
+        onChange={this.onChange}
+        />
       </Form.Item>
 
       <Form.Item
@@ -165,7 +184,12 @@ const RegistrationForm = () => {
           },
         ]}
       >
-        <Input />
+        <Input 
+        value={this.state.nickname}
+        name="nickname"
+        type="text"
+        onChange={this.onChange}
+        />
       </Form.Item>
 
       <Form.Item
@@ -179,10 +203,14 @@ const RegistrationForm = () => {
         ]}
       >
         <Input
-          addonBefore={prefixSelector}
+          addonBefore={this.prefixSelector}
           style={{
             width: '100%',
           }}
+          value={this.state.phone}
+            name="phone"
+            type="text"
+            onChange={this.onChange}
         />
       </Form.Item>
 
@@ -200,7 +228,7 @@ const RegistrationForm = () => {
                 },
               ]}
             >
-              <Input />
+              <Input/>
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -214,13 +242,14 @@ const RegistrationForm = () => {
           阅读并同意 <a href="">条款</a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" className="register-form-button">
-          注册
-        </Button>
-      </Form.Item>
-    </Form>
-  );
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit" className="register-form-button">
+            注册
+          </Button>
+        </Form.Item>
+      </Form>
+    );
+  }
 };
 
-export default RegistrationForm ;
+export default connect(null,{userSignupRequest})(Registration) ;

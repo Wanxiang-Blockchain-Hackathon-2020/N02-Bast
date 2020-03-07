@@ -10,17 +10,23 @@ export default class homepage extends React.Component{
             <div 
             className='homepage'
             >
-                <h className='ziigy' >
+                <div className='ziigy'>
+                <h  >
                 <br />
-                   BTCU 公益
+                   
                 </h>
-                <br/>
-                <br/>
+                </div>
                 <div className='ziijiany'>
-                    <h >
-                    <br/><br/>在这个理想地，金钱不再是最高统治者。<br/>个人的价值比物质财富和社会地位重要许多<br/>
-                        人从慈善中获得自我满足，内心的善念得到满足<br/>慈善是人的最高层次需求<br/><br/><br/>
-                    </h>
+                <h1 class="display-4 font-italic">Bast 公益</h1>
+                <p class="lead my-3">在这个理想地，金钱不再是最高统治者<br/>个人的价值比物质财富和社会地位重要许多<br/>人从慈善中获得自我满足，内心的善念得到满足<br/>慈善是人的最高层次需求
+                </p>
+                <p className='ziijianyen'>
+                In this ideal, money is no longer the supreme ruler<br />
+                Personal value is much more important than material wealth and social status<br />
+                People get self-satisfaction from charity, and inner good intentions are satisfied<br />
+                Charity is the highest level of human needs
+                </p>
+                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
                 </div>
                 <br/>
                 <Row  gutter={[1,16]} align="top">
