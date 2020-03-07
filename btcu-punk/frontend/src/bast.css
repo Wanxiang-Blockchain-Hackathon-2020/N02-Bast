@@ -1,0 +1,174 @@
+
+.withimg img{with:12000 px;height: 10 px;}
+* {
+box-sizing: border-box;
+}
+
+tr{
+	height: 30px;
+}
+
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background:#FDFDFD;
+}
+
+/* 头部标题 */
+.header {
+  padding: 5px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+  color: #FC0509
+}
+/*创建列*/
+.column {
+  float: left;
+  padding: 0px;
+}
+/*三列*/
+.column.threecolum {
+  width: 33.3%;
+  height: auto;
+  padding-left: 20px;
+
+}
+.column.threecolum img{
+	object-position: center;
+	width: 100%;
+	height: auto;
+}
+.column.threecolum a{
+	text-align: center;
+	width: 100%;
+	height: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* 中间区域宽度 */
+.column.middle {
+  width: 33%;
+  height: auto;
+}
+/*两列*/
+.column.twocolum {
+  width: 50%;
+  height:auto;
+}		
+.column.twocolum_one {
+  width: 66.6%;
+  height:auto;
+}
+.column.twocolum_one.one {
+  width: 50%;
+  height:auto;
+  padding: 5px;
+		overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 8;
+	-webkit-box-orient: vertical;
+  }
+.column.twocolum_one.two {
+  width: 50%;
+  height:auto;
+  padding-left: 15px;
+  padding-right: 5px;
+  }
+
+/* 列后面清除浮动 */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}		
+
+/* 响应式布局 - 宽度小于600px时设置上下布局 */
+
+@media screen and (max-width: 600px) {
+  .column.threecolum, .column.middle ,.column.twocolum{
+	width: 100%;
+  }
+}
+
+
+/* 底部样式 */
+.footer {
+position:relative;
+bottom: 0;
+left: 0;
+right: 0;
+text-align: center;
+height: 30px;
+line-height: 10px;
+}
+
+/*hidden*/
+.paragraph_hidden{
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.a_hidden{
+	width: 100%;	
+	text-align:left;
+	color: #030303;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+.a_day{
+	width: 100%;
+	text-align: right
+}
+table.black{color: #030303}
+
+a{
+	text-decoration:none; 
+	color:#000;
+	display:block; 
+}
+a:link{
+	color:#000;
+}
+
+a:visited:hover{ 
+	 text-decoration:underline; 
+	 color:#0B0FE1;
+	/*
+	 background-color:#666;*/
+}
+
+div.container
+{
+	width:30em;
+
+}
+div.box
+{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	width:auto;
+	
+	float:left;
+}
+.text_indent{
+padding-top: 12px;
+	line-height: 30px;
+	text-align: left;
+	text-indent: 2em;
+}
+
